@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anton Odegov — Enterprise Architect • Founder • Product Builder</title>
+  <meta name="description" content="Personal website of Anton Odegov — Enterprise Architect, product builder, and founder of Black Sea Labs." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #111832;
+      --card: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.1);
+      --text: #edf2ff;
+      --muted: #b8c3e1;
+      --accent: #7cc7ff;
+      --accent-2: #8d7dff;
+      --success: #8ef0c7;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --max: 1180px;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(124,199,255,0.18), transparent 28%),
+        radial-gradient(circle at top left, rgba(141,125,255,0.18), transparent 24%),
+        linear-gradient(180deg, #09101f 0%, #0c1327 55%, #0a1020 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .wrap { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(16px);
+      background: rgba(8, 12, 24, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #06111c;
+      font-weight: 900;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 84px 0 52px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .section-card,
+    .project-card,
+    .quote-card,
+    .timeline,
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 38px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: var(--success);
+      background: rgba(142,240,199,0.09);
+      border: 1px solid rgba(142,240,199,0.18);
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 { line-height: 1.12; margin: 0 0 16px; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4.6rem); letter-spacing: -1.5px; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); letter-spacing: -0.8px; }
+    h3 { font-size: 1.15rem; }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 62ch;
+      margin-bottom: 26px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 14px;
+      font-weight: 650;
+      transition: 0.22s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #08111f;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+      color: var(--text);
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .hero-card {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: space-between;
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(124,199,255,0.28), rgba(141,125,255,0.28));
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .muted { color: var(--muted); }
+
+    .tag-list,
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag,
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      max-width: 68ch;
+      color: var(--muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .section-card,
+    .project-card,
+    .contact-card,
+    .quote-card,
+    .timeline {
+      padding: 24px;
+    }
+
+    .section-card p,
+    .project-card p,
+    .contact-card p,
+    .quote-card p,
+    .timeline p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .project-card.featured {
+      background:
+        linear-gradient(180deg, rgba(124,199,255,0.10), rgba(255,255,255,0.03)),
+        rgba(255,255,255,0.05);
+    }
+
+    .project-card .project-type {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: var(--success);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 18px;
+    }
+
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 6px rgba(124,199,255,0.08);
+    }
+
+    .quote-card {
+      background: linear-gradient(180deg, rgba(141,125,255,0.12), rgba(255,255,255,0.04));
+    }
+
+    .quote {
+      font-size: 1.16rem;
+      color: var(--text) !important;
+    }
+
+    .footer {
+      padding: 34px 0 56px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .footer-box {
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-row {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 48px; }
+      .hero-copy,
+      .hero-card,
+      .section-card,
+      .project-card,
+      .quote-card,
+      .timeline,
+      .contact-card { padding: 20px; }
+      .nav-links { display: none; }
+      .wrap { width: min(var(--max), calc(100% - 20px)); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-badge">AO</span>
+        <span>Anton Odegov</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Enterprise Architecture • AI Products • Founder</div>
+          <h1>Building digital products, architectures, and platforms that solve real-world problems.</h1>
+          <p class="lead">
+            I’m Anton Odegov — an enterprise architecture leader and product builder focused on scalable platforms,
+            AI-enabled systems, and mission-driven products. My work spans cloud architecture, system design,
+            marketplaces, and turning ambitious ideas into launch-ready products.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/anton-odegov/" target="_blank" rel="noreferrer">View LinkedIn</a>
+            <a class="btn btn-secondary" href="#projects">See My Projects</a>
+          </div>
+          <div class="metric-row">
+            <div class="metric">
+              <strong>Architecture</strong>
+              <span>Enterprise, solution, and platform design across cloud-native systems.</span>
+            </div>
+            <div class="metric">
+              <strong>AI + Product</strong>
+              <span>RAG, LLM workflows, product strategy, and MVP delivery.</span>
+            </div>
+            <div class="metric">
+              <strong>Founder Mindset</strong>
+              <span>Building Black Sea Labs and map-first consumer platforms.</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div>
+            <div class="profile-top">
+              <div class="avatar">AO</div>
+              <div>
+                <h3 style="margin-bottom:4px;">Anton Odegov</h3>
+                <div class="muted">Enterprise Architect • Founder • Product Builder</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>Focus areas</h3>
+            <div class="tag-list">
+              <span class="tag">Cloud Architecture</span>
+              <span class="tag">AWS / Azure</span>
+              <span class="tag">AI Systems</span>
+              <span class="tag">Platform Strategy</span>
+              <span class="tag">Marketplaces</span>
+              <span class="tag">Flutter + Web</span>
+            </div>
+          </div>
+
+          <div>
+            <h3>Currently building</h3>
+            <p>
+              Black Sea Labs — a product studio focused on map-first platforms, community-centric products,
+              and scalable digital experiences starting with <strong>LetPeopleGo</strong>.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>About</h2>
+            <p class="section-sub">
+              This homepage is designed as a clean first-launch presentation: who you are, what you build,
+              and where your work is heading.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="section-card">
+            <h3>Professional profile</h3>
+            <p>
+              I work at the intersection of enterprise architecture, software strategy, and product execution.
+              My background is centered on designing reliable, scalable systems and translating complex business
+              needs into practical architecture decisions and product roadmaps.
+            </p>
+          </div>
+          <div class="section-card">
+            <h3>What I care about</h3>
+            <p>
+              I’m especially interested in products that help people directly: transparent marketplaces,
+              trust-driven platforms, AI-assisted workflows, and digital tools that create measurable value
+              for both users and businesses.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Expertise</h2>
+            <p class="section-sub">
+              A concise way to present your strongest areas without overcrowding the homepage.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="section-card">
+            <h3>Enterprise & solution architecture</h3>
+            <p>
+              Architecture design for high-scale systems, integration-heavy platforms, secure environments,
+              and modernization initiatives across complex domains.
+            </p>
+          </div>
+          <div class="section-card">
+            <h3>AI and intelligent product systems</h3>
+            <p>
+              Product thinking around LLM workflows, RAG-based assistants, evaluation loops, and AI features
+              that fit real operational and user-facing use cases.
+            </p>
+          </div>
+          <div class="section-card">
+            <h3>Product strategy & delivery</h3>
+            <p>
+              Turning ideas into MVPs, defining scope, shaping platform direction, and building launch paths
+              for startup and innovation-oriented products.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>Selected projects</h2>
+            <p class="section-sub">
+              This section introduces your product studio direction and the initiatives most worth highlighting
+              at launch.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="project-card featured">
+            <span class="project-type">Flagship product</span>
+            <h3>LetPeopleGo</h3>
+            <p>
+              A map-first local services marketplace where users can discover providers, see starting prices,
+              compare options visually, and book services with a cleaner, more transparent experience.
+            </p>
+            <div class="chips" style="margin-top:16px;">
+              <span class="chip">Map-first UX</span>
+              <span class="chip">Transparent pricing</span>
+              <span class="chip">Provider discovery</span>
+              <span class="chip">Marketplace platform</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Product studio</span>
+            <h3>Black Sea Labs</h3>
+            <p>
+              A studio umbrella for building mission-driven digital products, starting with practical MVPs,
+              scalable architecture, and real-world user value rather than hype-first launches.
+            </p>
+            <div class="chips" style="margin-top:16px;">
+              <span class="chip">Product strategy</span>
+              <span class="chip">Architecture-led</span>
+              <span class="chip">Mission-driven</span>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Emerging direction</span>
+            <h3>AI-enabled community platforms</h3>
+            <p>
+              Exploring products that combine marketplaces, support communities, and AI guidance to help people
+              navigate career transitions, service discovery, and trusted digital interactions.
+            </p>
+          </article>
+
+          <article class="project-card">
+            <span class="project-type">Future products</span>
+            <h3>Platform concepts under exploration</h3>
+            <p>
+              Additional concepts under the Black Sea Labs umbrella include collaboration tools, social-impact
+              platforms, and specialized workflow products with strong architecture foundations.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap grid-2">
+        <div class="timeline">
+          <h2 style="font-size:1.5rem; margin-bottom:20px;">How this site should evolve</h2>
+          <div class="timeline-item">
+            <h3>Step 1 — clean launch page</h3>
+            <p>Introduce your profile, expertise, and flagship projects with a polished personal brand presence.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>Step 2 — richer credibility</h3>
+            <p>Add exact career timeline, selected roles, notable employers, and concrete achievements from your CV.</p>
+          </div>
+          <div class="timeline-item">
+            <h3>Step 3 — portfolio depth</h3>
+            <p>Link case studies, architecture writeups, blog posts, product updates, and launch notes.</p>
+          </div>
+        </div>
+
+        <div class="quote-card">
+          <h2 style="font-size:1.5rem; margin-bottom:14px;">Positioning</h2>
+          <p class="quote">
+            “I build architecture-led digital products with a strong focus on scalability, clarity, and real user value.”
+          </p>
+          <p style="margin-top:14px;">
+            This line works well as a personal positioning statement for a first public launch and can later be refined
+            once you add more exact career and portfolio details.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <h2>Contact</h2>
+          <p style="margin-bottom:16px;">
+            The simplest and cleanest first-launch contact path is LinkedIn. Later you can add email,
+            a downloadable résumé, project case studies, and a dedicated blog section.
+          </p>
+          <div class="cta-row" style="margin-bottom:0;">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/anton-odegov/" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
+            <a class="btn btn-secondary" href="https://mcblacksea.github.io/" target="_blank" rel="noreferrer">Current Site</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-box">
+      <div>© 2026 Anton Odegov. All rights reserved.</div>
+      <div>Built for GitHub Pages • First launch version</div>
+    </div>
+  </footer>
+</body>
+</html>
