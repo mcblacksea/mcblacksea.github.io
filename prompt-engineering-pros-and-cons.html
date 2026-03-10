@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Engineering: Pros and Cons | MC BlackSea</title>
+  <meta name="description" content="A practical article on the strengths and weaknesses of prompt engineering in real software and AI product work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header glass">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">MB</span>
+        <span><strong>MC BlackSea</strong><small>Architecture • AI • Product • Travel</small></span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="news.html">AI & Software News</a>
+        <a href="travel.html">Travel Blog</a>
+        <a href="startup.html" class="active">AI & Software Blog</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle button button-ghost" type="button" id="themeToggle" aria-label="Toggle day and night mode">
+          <span class="theme-toggle-icon">◐</span>
+          <span id="themeToggleText">Night mode</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <article class="article-shell glass">
+        <div class="eyebrow">Essay</div>
+        <h1>Prompt engineering: pros and cons</h1>
+        <div class="meta-row article-meta"><span>2026-03-10</span><span>7 min read</span><span>AI Product Delivery</span></div>
+
+        <p class="lead">Prompt engineering is one of the fastest ways to turn a general-purpose model into a useful working surface. It is also one of the easiest disciplines to overrate. In practice, it is powerful, but it is not enough on its own.</p>
+
+        <h2>Why prompt engineering is valuable</h2>
+        <p>At its best, prompt engineering compresses product learning cycles. You can define tone, structure, role, output format, evaluation criteria, and task boundaries without writing a full application layer first. That makes it a strong tool for prototyping, internal copilots, workflow design, customer support assistants, and research surfaces.</p>
+        <p>It also helps teams clarify thinking. A good prompt often exposes what the team actually wants: the business objective, the expected output, the constraints, and the fallback behavior. In that sense, prompt writing can become a lightweight form of product specification.</p>
+
+        <h2>The advantages</h2>
+        <div class="article-list">
+          <p><strong>Speed.</strong> You can test ideas in hours instead of weeks.</p>
+          <p><strong>Low implementation cost.</strong> Early experiments can happen before deeper infrastructure investment.</p>
+          <p><strong>Better communication.</strong> Clear prompts force clearer requirements.</p>
+          <p><strong>Workflow flexibility.</strong> Different prompts can support discovery, drafting, evaluation, and transformation tasks.</p>
+          <p><strong>Useful leverage.</strong> For solo builders and small teams, prompt quality can dramatically improve output quality.</p>
+        </div>
+
+        <h2>The limits and drawbacks</h2>
+        <p>The biggest weakness is fragility. A prompt that works today can drift when the model changes, the input data changes, or the context window becomes noisy. Prompt engineering often creates the illusion of control while hiding unstable behavior underneath.</p>
+        <p>It can also become a local optimization trap. Teams may keep polishing wording instead of solving the larger system problem: retrieval quality, tool reliability, state management, permissions, observability, evaluation, or user experience design.</p>
+        <div class="article-list">
+          <p><strong>Hidden brittleness.</strong> Small input changes can produce inconsistent results.</p>
+          <p><strong>Weak guarantees.</strong> Prompts do not replace deterministic business logic.</p>
+          <p><strong>Maintenance overhead.</strong> Prompt libraries sprawl quickly if there is no structure.</p>
+          <p><strong>Difficult testing.</strong> It is harder to validate nuanced language behavior than a fixed algorithm.</p>
+          <p><strong>False confidence.</strong> A good demo can hide a weak production design.</p>
+        </div>
+
+        <h2>Where it fits in real product work</h2>
+        <p>Prompt engineering works best as one layer in a broader system. The strongest AI products combine prompt design with retrieval, tool use, memory boundaries, structured outputs, evaluation loops, and clear fallback patterns. In other words, prompt engineering matters most when it is connected to architecture.</p>
+        <p>For builders, the right mindset is practical: use prompts to move fast, but do not confuse prompt quality with product maturity. Durable value comes from the full stack around the model.</p>
+
+        <h2>My conclusion</h2>
+        <p>Prompt engineering is real leverage. It is often the quickest path from idea to useful behavior. But it is not a substitute for product strategy, software engineering, or systems design. The winning approach is to treat prompts as a high-value interface layer, not the whole solution.</p>
+
+        <div class="button-row top-gap">
+          <a class="button" href="startup.html">Back to blog</a>
+          <a class="button button-ghost" href="index.html">Home</a>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Anton Odegov • MC BlackSea / Black Sea Labs</p>
+    </footer>
+  </div>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

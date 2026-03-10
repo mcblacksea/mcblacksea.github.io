@@ -1,5 +1,6 @@
 const currencyOptions = [
-  'USD', 'EUR', 'GBP', 'UAH', 'TRY', 'PLN', 'CHF', 'JPY', 'CAD', 'AUD', 'CNY', 'SEK', 'NOK'
+  'USD', 'EUR', 'GBP', 'UAH', 'TRY', 'PLN', 'CHF', 'JPY', 'CAD', 'AUD', 'CNY', 'SEK', 'NOK',
+  'DKK', 'CZK', 'HUF', 'RON', 'BGN', 'SGD', 'HKD', 'NZD', 'MXN', 'BRL', 'INR', 'ZAR'
 ];
 
 function byId(id) {
@@ -17,6 +18,29 @@ function createOption(currency, selected) {
   opt.textContent = currency;
   opt.selected = selected;
   return opt;
+}
+
+function initThemeToggle() {
+  const html = document.documentElement;
+  const button = byId('themeToggle');
+  const label = byId('themeToggleText');
+  const storedTheme = localStorage.getItem('site-theme');
+  const preferredTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+  const activeTheme = storedTheme || preferredTheme;
+
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('site-theme', theme);
+    if (label) label.textContent = theme === 'dark' ? 'Night mode' : 'Day mode';
+  }
+
+  applyTheme(activeTheme);
+
+  if (button) {
+    button.addEventListener('click', () => {
+      applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+  }
 }
 
 async function initConverter() {
@@ -51,7 +75,7 @@ async function initConverter() {
       const data = await res.json();
       const converted = data?.rates?.[to];
       if (typeof converted !== 'number') throw new Error('No conversion result');
-      resultEl.innerHTML = `<strong>${amount.toLocaleString()} ${from}</strong> = <strong>${converted.toLocaleString(undefined, { maximumFractionDigits: 4 })} ${to}</strong>`;
+      resultEl.innerHTML = `<strong>${amount.toLocaleString(undefined, { maximumFractionDigits: 2 })} ${from}</strong> = <strong>${converted.toLocaleString(undefined, { maximumFractionDigits: 4 })} ${to}</strong>`;
       metaEl.textContent = `Rate date: ${data.date}. Base: ${data.base}.`;
     } catch (error) {
       resultEl.textContent = 'Unable to load exchange rates right now.';
@@ -134,20 +158,22 @@ async function loadNewsPage() {
       `).join('');
     };
 
-    filtersEl.innerHTML = '';
-    sources.forEach((source) => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = `chip ${source === activeSource ? 'active' : ''}`;
-      btn.textContent = source;
-      btn.addEventListener('click', () => {
-        activeSource = source;
-        [...filtersEl.children].forEach((el) => el.classList.remove('active'));
-        btn.classList.add('active');
-        renderItems();
+    if (filtersEl) {
+      filtersEl.innerHTML = '';
+      sources.forEach((source) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `chip ${source === activeSource ? 'active' : ''}`;
+        btn.textContent = source;
+        btn.addEventListener('click', () => {
+          activeSource = source;
+          [...filtersEl.children].forEach((el) => el.classList.remove('active'));
+          btn.classList.add('active');
+          renderItems();
+        });
+        filtersEl.appendChild(btn);
       });
-      filtersEl.appendChild(btn);
-    });
+    }
 
     renderItems();
   } catch {
@@ -162,20 +188,25 @@ async function loadPosts(file, targetId) {
   try {
     const res = await fetch(file);
     const posts = await res.json();
-    gridEl.innerHTML = posts.map((post) => `
-      <article class="post-card">
-        <span class="tile-tag">${post.tag}</span>
-        <h3>${post.title}</h3>
-        <div class="meta-row"><span>${post.date}</span><span>${post.read_time}</span></div>
-        <p class="small muted">${post.excerpt}</p>
-      </article>
-    `).join('');
+    gridEl.innerHTML = posts.map((post) => {
+      const wrapperStart = post.url ? `<a class="post-card" href="${post.url}">` : '<article class="post-card">';
+      const wrapperEnd = post.url ? '</a>' : '</article>';
+      return `
+        ${wrapperStart}
+          <span class="tile-tag">${post.tag}</span>
+          <h3>${post.title}</h3>
+          <div class="meta-row"><span>${post.date}</span><span>${post.read_time}</span></div>
+          <p class="small muted">${post.excerpt}</p>
+        ${wrapperEnd}
+      `;
+    }).join('');
   } catch {
     gridEl.innerHTML = '<p class="small muted">Posts are not available right now.</p>';
   }
 }
 
 setYear();
+initThemeToggle();
 initConverter();
 loadNewsPreview();
 loadNewsPage();

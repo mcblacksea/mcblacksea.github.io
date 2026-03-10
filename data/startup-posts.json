@@ -1,5 +1,13 @@
 [
   {
+    "tag": "Essay",
+    "title": "Prompt engineering: pros and cons",
+    "date": "2026-03-10",
+    "read_time": "7 min read",
+    "excerpt": "A practical look at where prompt engineering gives real leverage, where it becomes brittle, and why architecture still matters around the model.",
+    "url": "prompt-engineering-pros-and-cons.html"
+  },
+  {
     "tag": "Startup",
     "title": "Why architecture still matters in the AI era",
     "date": "2026-03-10",

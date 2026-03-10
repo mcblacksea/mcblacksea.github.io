@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,7 +26,13 @@
         <a href="travel.html">Travel Blog</a>
         <a href="startup.html">AI & Software Blog</a>
       </nav>
-      <a class="button button-ghost" href="https://www.linkedin.com/in/anton-odegov/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <div class="header-actions">
+        <button class="theme-toggle button button-ghost" type="button" id="themeToggle" aria-label="Toggle day and night mode">
+          <span class="theme-toggle-icon">◐</span>
+          <span id="themeToggleText">Night mode</span>
+        </button>
+        <a class="button button-ghost" href="https://www.linkedin.com/in/anton-odegov/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
     </header>
 
     <main>
@@ -48,23 +54,46 @@
             <div class="metric-card glass"><span>Venture</span><strong>Black Sea Labs</strong></div>
           </div>
         </div>
-        <aside class="profile-card glass">
-          <div class="profile-top">
-            <div class="avatar">AO</div>
-            <div>
-              <h2>Anton Odegov</h2>
-              <p>Enterprise / Solution Architect • AI Builder • Founder</p>
+        <aside class="profile-card glass hero-side-stack">
+          <div>
+            <div class="profile-top">
+              <div class="avatar">AO</div>
+              <div>
+                <h2>Anton Odegov</h2>
+                <p>Enterprise / Solution Architect • AI Builder • Founder</p>
+              </div>
             </div>
+            <p>
+              This site is my public base for ideas, execution, architecture writing, AI startup notes, and selected travel stories.
+            </p>
+            <ul class="check-list">
+              <li>Software architecture and platform design</li>
+              <li>AI systems, product strategy, and experimentation</li>
+              <li>Startup building and personal project journal</li>
+              <li>Travel notes and perspective-driven writing</li>
+            </ul>
           </div>
-          <p>
-            This site is my public base for ideas, execution, architecture writing, AI startup notes, and selected travel stories.
-          </p>
-          <ul class="check-list">
-            <li>Software architecture and platform design</li>
-            <li>AI systems, product strategy, and experimentation</li>
-            <li>Startup building and personal project journal</li>
-            <li>Travel notes and perspective-driven writing</li>
-          </ul>
+
+          <section class="mini-converter card subtle-panel compact-converter">
+            <div class="panel-head">
+              <div>
+                <div class="card-kicker">Utility</div>
+                <h3>Currency converter</h3>
+              </div>
+              <span class="tiny-pill">Compact</span>
+            </div>
+            <form id="converter-form" class="compact-converter-form">
+              <div class="inline-fields">
+                <input id="amount" type="number" value="100" min="0" step="0.01" aria-label="Amount" />
+                <select id="fromCurrency" aria-label="From currency"></select>
+                <button class="swap-button" id="swapCurrencies" type="button" aria-label="Swap currencies">⇄</button>
+                <select id="toCurrency" aria-label="To currency"></select>
+                <button class="button compact-button" type="submit">Convert</button>
+              </div>
+            </form>
+            <div id="converterResult" class="compact-result">Loading latest rates…</div>
+            <p class="small muted" id="converterMeta"></p>
+          </section>
         </aside>
       </section>
 
@@ -88,40 +117,22 @@
 
       <section class="section grid-2">
         <article class="card glass">
-          <div class="card-kicker">Live utility</div>
-          <h2>Currency converter</h2>
-          <p class="muted">Quick conversion widget on the homepage for international work, travel, and market thinking.</p>
-          <form id="converter-form" class="converter-form">
-            <div class="field-group">
-              <label for="amount">Amount</label>
-              <input id="amount" type="number" value="100" min="0" step="0.01" />
-            </div>
-            <div class="field-row">
-              <div class="field-group">
-                <label for="fromCurrency">From</label>
-                <select id="fromCurrency"></select>
-              </div>
-              <div class="field-group">
-                <label for="toCurrency">To</label>
-                <select id="toCurrency"></select>
-              </div>
-            </div>
-            <div class="button-row">
-              <button class="button" type="submit">Convert</button>
-              <button class="button button-ghost" id="swapCurrencies" type="button">Swap</button>
-            </div>
-          </form>
-          <div id="converterResult" class="result-box">Loading latest rates…</div>
-          <p class="small muted" id="converterMeta"></p>
-        </article>
-
-        <article class="card glass">
           <div class="card-kicker">Latest feed</div>
           <h2>AI & software news</h2>
-          <p class="muted">A curated front page sourced from major technology and AI publications.</p>
+          <p class="muted">A curated front page sourced from major technology and AI publications, refreshed hourly by GitHub Actions.</p>
           <div id="newsPreview" class="news-preview-list"></div>
           <div class="button-row top-gap">
             <a class="button" href="news.html">Open full news page</a>
+          </div>
+        </article>
+
+        <article class="card glass featured-essay">
+          <div class="card-kicker">New essay</div>
+          <h2>Prompt engineering: pros and cons</h2>
+          <p class="muted">A balanced personal view on when prompt engineering accelerates product work, where it breaks down, and why systems thinking still matters.</p>
+          <div class="button-row top-gap">
+            <a class="button" href="prompt-engineering-pros-and-cons.html">Read article</a>
+            <a class="button button-ghost" href="startup.html">Open startup blog</a>
           </div>
         </article>
       </section>
@@ -130,10 +141,10 @@
         <div class="section-head">
           <div>
             <div class="eyebrow">Writing spaces</div>
-            <h2>Three sections, three lenses</h2>
+            <h2>Four sections, four lenses</h2>
           </div>
         </div>
-        <div class="grid-3">
+        <div class="grid-4 cards-grid-4">
           <a class="card glass page-tile" href="news.html">
             <span class="tile-tag">News</span>
             <h3>AI & Software News</h3>
@@ -148,6 +159,11 @@
             <span class="tile-tag">Startup</span>
             <h3>AI Startup & Software Blog</h3>
             <p>Strategy notes, founder thinking, architecture decisions, and product essays.</p>
+          </a>
+          <a class="card glass page-tile" href="prompt-engineering-pros-and-cons.html">
+            <span class="tile-tag">Essay</span>
+            <h3>Prompt Engineering</h3>
+            <p>Pros, cons, practical trade-offs, and where prompt design fits into real product delivery.</p>
           </a>
         </div>
       </section>
