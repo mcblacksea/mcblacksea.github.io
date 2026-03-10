@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-03-10T00:00:00Z",
+  "items": [
+    {
+      "source": "OpenAI News",
+      "title": "Welcome to the AI & software news page",
+      "link": "https://openai.com/news/",
+      "published": "2026-03-10T00:00:00Z",
+      "category": "AI",
+      "summary": "This placeholder entry will be replaced automatically after the GitHub Actions workflow runs."
+    },
+    {
+      "source": "GitHub Blog",
+      "title": "Your scheduled workflow can keep this page fresh",
+      "link": "https://github.blog/",
+      "published": "2026-03-10T00:00:00Z",
+      "category": "Software",
+      "summary": "The repository includes an hourly workflow that fetches and rebuilds this JSON file."
+    }
+  ]
+}

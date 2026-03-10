@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI & Software News | MC BlackSea</title>
+  <meta name="description" content="AI and software news, refreshed from curated feeds and published on GitHub Pages." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header glass">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">MB</span>
+        <span><strong>MC BlackSea</strong><small>Architecture • AI • Product • Travel</small></span>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="news.html" class="active">AI & Software News</a>
+        <a href="travel.html">Travel Blog</a>
+        <a href="startup.html">AI & Software Blog</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero glass">
+        <div class="eyebrow">Curated feed</div>
+        <h1>AI & software news</h1>
+        <p class="lead">A clean news surface for scanning headlines, source, date, and context. This page reads the latest generated JSON feed.</p>
+        <p class="small muted" id="newsUpdatedAt">Loading refresh time…</p>
+      </section>
+
+      <section class="section">
+        <div id="newsFilters" class="chip-row"></div>
+        <div id="newsGrid" class="news-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Anton Odegov • MC BlackSea / Black Sea Labs</p>
+    </footer>
+  </div>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>
